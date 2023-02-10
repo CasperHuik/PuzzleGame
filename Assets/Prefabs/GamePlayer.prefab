@@ -154,7 +154,7 @@ Transform:
   m_GameObject: {fileID: 6141406830019278485}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 6709536673289386271}
   - {fileID: 9086749414871118679}
@@ -256,9 +256,9 @@ MonoBehaviour:
   syncInterval: 0.1
   controller: {fileID: 3642246726977611159}
   PlayerModel: {fileID: 6910849999275624852}
-  speed: 12
+  speed: 5
   gravity: -19.62
-  jumpHeight: 2
+  jumpHeight: 1
   groundCheck: {fileID: 5460799183204553992}
   groundDistance: 0.4
   groundMask:
@@ -421,7 +421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8756346626095063175}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.113, y: 1.503, z: 0}
+  m_LocalPosition: {x: -0.113, y: 1.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6141406830019278474}
@@ -490,9 +490,9 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4f3c2aba8fda78a4ca20e5cc90ccba36, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.071
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
