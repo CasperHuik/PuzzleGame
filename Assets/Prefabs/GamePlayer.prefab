@@ -391,6 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59c44ba8790508843bf3ed5e72eea4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   materialP1: {fileID: 2100000, guid: 10a4e96b10ac3da4ab507dfbcf2acc8f, type: 2}
   materialP2: {fileID: 2100000, guid: 1661add9cc773794cbca4bbf925fd9d9, type: 2}
   materialP3: {fileID: 2100000, guid: 2bd691995ed50f4418905e918e3d14c5, type: 2}

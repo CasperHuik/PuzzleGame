@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 2071791151946477105}
   - component: {fileID: 272399662576139015}
   m_Layer: 0
-  m_Name: GamePlayer (1)
+  m_Name: fpsTestController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -480,14 +480,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2071791151946477105}
   PlayerModel: {fileID: 8188637583175074354}
-  speed: 12
-  gravity: -9.81
+  speed: 5
+  gravity: -19.62
   jumpHeight: 2
   groundCheck: {fileID: 7314691207989550766}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 256
-  mouseSensitivity: 100
-  playerBody: {fileID: 5787470185202252017}
+  mouseSensitivity: 400
+  playerBody: {fileID: 8894908277686648108}
   camera: {fileID: 3681946343447167784}
