@@ -94,11 +94,20 @@ public class GamePlayer : NetworkBehaviour
     {
         if (hasAuthority)
             CmdCanLobbyStartGame();
+        if(SceneManager.GetActiveScene().name == "Game"){
+            CmdCanLobbyStartGame();
+        }
     }
     [Command]
     void CmdCanLobbyStartGame()
     {
-        Game.StartGame();
+        if(SceneManager.GetActiveScene().name != "Game"){
+            Game.StartGame("Game");
+        }
+        else{
+            Game.StartGame("map test");
+        }
+        
     }
     public void QuitLobby()
     {
@@ -129,5 +138,9 @@ public class GamePlayer : NetworkBehaviour
         Game.GamePlayers.Remove(this);
         Debug.Log("Removed player from the GamePlayer list: " + this.playerName);
         LobbyManager.instance.UpdateUI();
+    }
+
+    private void OnTriggerEnter(Collider other){
+        CanLobbyStartGame();
     }
 }

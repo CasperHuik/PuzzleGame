@@ -40,11 +40,14 @@ public class MyNetworkManager : NetworkManager
             Debug.Log("Player added. Player name: " + GamePlayerInstance.playerName + ". Player connection id: " + GamePlayerInstance.ConnectionId.ToString());
         }
     }
-    public void StartGame()
+    public void StartGame(string sceneName)
     {
         if (CanStartGame() && SceneManager.GetActiveScene().name == "Lobby")
         {
-            ServerChangeScene("Game");
+            ServerChangeScene(sceneName);
+        }
+        if(SceneManager.GetActiveScene().name == "Game"){
+            ServerChangeScene(sceneName);
         }
     }
     private bool CanStartGame()
