@@ -6,8 +6,6 @@ using Mirror;
 
 public class FirstPersonMovement : NetworkBehaviour
 {
-    private bool isMoving = false; 
-
     private Animator animator;
 
     public CharacterController controller; 
