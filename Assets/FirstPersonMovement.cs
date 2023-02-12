@@ -6,6 +6,9 @@ using Mirror;
 
 public class FirstPersonMovement : NetworkBehaviour
 {
+    private bool isMoving = false; 
+
+    private Animator animator;
 
     public CharacterController controller; 
     public GameObject PlayerModel; 
@@ -23,6 +26,7 @@ public class FirstPersonMovement : NetworkBehaviour
 
     private void Start(){
         PlayerModel.SetActive(false);
+        animator = GetComponent<Animator>();
         
     }
 
@@ -47,6 +51,8 @@ public class FirstPersonMovement : NetworkBehaviour
 
                 float x = Input.GetAxis("Horizontal");
                 float z = Input.GetAxis("Vertical");
+                if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0){animator.SetBool("IsMoving", true);}
+                else{animator.SetBool("IsMoving", false);}
 
                 Vector3 move = transform.right * x + transform.forward * z; 
 

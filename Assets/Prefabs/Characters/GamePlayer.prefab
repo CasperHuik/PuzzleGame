@@ -241,7 +241,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: -0.11, y: 1.08, z: -0.02}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &3876103519005748689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 7335045289914514481}
   - component: {fileID: 680335397548528753}
   - component: {fileID: 3369338509713982785}
+  - component: {fileID: 6680025496397988401}
   m_Layer: 0
   m_Name: Skin
   m_TagString: Untagged
@@ -345,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6910849999275624852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.12013173, y: 1.0792289, z: -0.03352642}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5166465518772711610}
@@ -438,6 +439,23 @@ MonoBehaviour:
   networkHat1: {fileID: 9115803915772157865}
   networkHat2: {fileID: 8676500890464827594}
   gamePlayerScript: {fileID: 6777906575338827274}
+--- !u!114 &6680025496397988401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6910849999275624852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  serverOnly: 0
+  visible: 0
+  m_AssetId: d5ebc752c19faee42b19b97bcb0145e8
+  hasSpawned: 0
 --- !u!1 &8756346626095063175
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +733,7 @@ PrefabInstance:
     - target: {fileID: 9216200083876772820, guid: 925c155961020df4aa51c9fd140dc3f2,
         type: 3}
       propertyPath: m_Name
-      value: Hat_1
+      value: NetworkHat1
       objectReference: {fileID: 0}
     - target: {fileID: 9216200083876772820, guid: 925c155961020df4aa51c9fd140dc3f2,
         type: 3}
@@ -816,7 +834,7 @@ PrefabInstance:
     - target: {fileID: 9216200083876772820, guid: 925c155961020df4aa51c9fd140dc3f2,
         type: 3}
       propertyPath: m_Name
-      value: Hat_1
+      value: Hat2
       objectReference: {fileID: 0}
     - target: {fileID: 9216200083876772820, guid: 925c155961020df4aa51c9fd140dc3f2,
         type: 3}
@@ -825,15 +843,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 925c155961020df4aa51c9fd140dc3f2, type: 3}
---- !u!4 &8674963151732267625 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8407470126417715566, guid: 925c155961020df4aa51c9fd140dc3f2,
-    type: 3}
-  m_PrefabInstance: {fileID: 922952665880394503}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8298016087973986515 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9216200083876772820, guid: 925c155961020df4aa51c9fd140dc3f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 922952665880394503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8674963151732267625 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8407470126417715566, guid: 925c155961020df4aa51c9fd140dc3f2,
     type: 3}
   m_PrefabInstance: {fileID: 922952665880394503}
   m_PrefabAsset: {fileID: 0}
@@ -917,7 +935,7 @@ PrefabInstance:
     - target: {fileID: 2296519583148378168, guid: ad86a024b3adea54880bc1554cc83710,
         type: 3}
       propertyPath: m_Name
-      value: SK_Hat
+      value: Hat2
       objectReference: {fileID: 0}
     - target: {fileID: 2296519583148378168, guid: ad86a024b3adea54880bc1554cc83710,
         type: 3}
@@ -1018,7 +1036,7 @@ PrefabInstance:
     - target: {fileID: 2296519583148378168, guid: ad86a024b3adea54880bc1554cc83710,
         type: 3}
       propertyPath: m_Name
-      value: SK_Hat
+      value: NetworkHat2
       objectReference: {fileID: 0}
     - target: {fileID: 2296519583148378168, guid: ad86a024b3adea54880bc1554cc83710,
         type: 3}
