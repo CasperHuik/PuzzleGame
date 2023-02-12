@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class PlayerLooks : MonoBehaviour
+public class PlayerLooks : NetworkBehaviour
 {
     public Material materialP1; 
     public Material materialP2; 
@@ -11,6 +12,8 @@ public class PlayerLooks : MonoBehaviour
 
     public GameObject hat1;
     public GameObject hat2;
+    public GameObject networkHat1;
+    public GameObject networkHat2;
 
     [SerializeField] GamePlayer gamePlayerScript; 
 
@@ -24,21 +27,49 @@ public class PlayerLooks : MonoBehaviour
             rend.sharedMaterial = materialP1; 
             hat1.SetActive(true);
             hat2.SetActive(false);
+            if(isLocalPlayer){
+                networkHat1.SetActive(false);
+            }
+            else{
+                networkHat1.SetActive(true);
+            }
+            networkHat2.SetActive(false);
         }
         else if(gamePlayerScript.playerNumber == 2){
             rend.sharedMaterial = materialP2; 
             hat1.SetActive(false);
             hat2.SetActive(true);
+            if(isLocalPlayer){
+                networkHat2.SetActive(false);
+            }
+            else{
+                networkHat2.SetActive(true);
+            }
+            networkHat1.SetActive(false);
         }
         else if(gamePlayerScript.playerNumber == 3){
             rend.sharedMaterial = materialP3; 
             hat1.SetActive(true);
             hat2.SetActive(false);
+            if(isLocalPlayer){
+                networkHat1.SetActive(false);
+            }
+            else{
+                networkHat1.SetActive(true);
+            }
+            networkHat2.SetActive(false);
         }
         else{
             rend.sharedMaterial = materialP4; 
             hat1.SetActive(false);
             hat2.SetActive(true);
+            if(isLocalPlayer){
+                networkHat1.SetActive(false);
+            }
+            else{
+                networkHat1.SetActive(true);
+            }
+            networkHat2.SetActive(false);
         }
         
     }
