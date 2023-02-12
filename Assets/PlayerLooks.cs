@@ -27,11 +27,13 @@ public class PlayerLooks : NetworkBehaviour
             rend.sharedMaterial = materialP1;
 
             //network hat
-            if(!isLocalPlayer){ 
+            if(isLocalPlayer){ 
                 networkHat1.gameObject.SetActive(false);
+                Debug.Log("Hat 1 true");
             }
             else{
                 networkHat1.gameObject.SetActive(true);
+                Debug.Log("Hat 1 false");
             }
             networkHat2.gameObject.SetActive(false);
         }
@@ -40,7 +42,7 @@ public class PlayerLooks : NetworkBehaviour
             rend.sharedMaterial = materialP2;
             
             //network hat
-            if(!isLocalPlayer){ 
+            if(isLocalPlayer){ 
                 networkHat2.gameObject.SetActive(false);
             }
             else{
@@ -53,7 +55,7 @@ public class PlayerLooks : NetworkBehaviour
             rend.sharedMaterial = materialP3; 
             
             //network hat
-            if(!isLocalPlayer){ 
+            if(isLocalPlayer){ 
                 networkHat1.gameObject.SetActive(false);
             }
             else{
@@ -66,7 +68,7 @@ public class PlayerLooks : NetworkBehaviour
             rend.sharedMaterial = materialP4;
 
             //network hat
-            if(!isLocalPlayer){ 
+            if(isLocalPlayer){ 
                 networkHat2.gameObject.SetActive(false);
             }
             else{
