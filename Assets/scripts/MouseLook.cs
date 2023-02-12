@@ -27,7 +27,7 @@ public class MouseLook : NetworkBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name; 
-        if(sceneName == "Game" && isLocalPlayer){
+        if((sceneName == "Game" || sceneName == "map test") && isLocalPlayer){
             Cursor.lockState = CursorLockMode.Locked;
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

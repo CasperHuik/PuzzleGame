@@ -7,6 +7,8 @@ using Mirror;
 public class FirstPersonMovement : NetworkBehaviour
 {
     private Animator animator;
+    public int activeScene = 0;
+    public Transform transformCharacter; 
 
     public CharacterController controller; 
     public GameObject PlayerModel; 
@@ -33,10 +35,15 @@ public class FirstPersonMovement : NetworkBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name; 
-        if(sceneName == "Game"){
+        if(sceneName == "Game" || sceneName == "map"){
             if(PlayerModel.activeSelf == false){
                 SetPosition();
+                activeScene++;
                 PlayerModel.SetActive(true);
+            }
+            if(sceneName=="map test"){
+                SetPosition();
+                activeScene++;
             }
 
             if(isLocalPlayer){
@@ -49,8 +56,8 @@ public class FirstPersonMovement : NetworkBehaviour
 
                 float x = Input.GetAxis("Horizontal");
                 float z = Input.GetAxis("Vertical");
-                if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0){animator.SetBool("IsMoving", true);}
-                else{animator.SetBool("IsMoving", false);}
+                //if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0){animator.SetBool("IsMoving", true);}
+                //else{animator.SetBool("IsMoving", false);}
 
                 Vector3 move = transform.right * x + transform.forward * z; 
 
@@ -68,7 +75,7 @@ public class FirstPersonMovement : NetworkBehaviour
     }
 
     public void SetPosition(){
-        transform.position = new Vector3(Random.Range(-5,5), 1, Random.Range(-15,7));
+        transformCharacter.position = transformCharacter.position + new Vector3(100,100,100);
     }
 
 }

@@ -257,6 +257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  activeScene: 0
+  transformCharacter: {fileID: 6141406830019278474}
   controller: {fileID: 3642246726977611159}
   PlayerModel: {fileID: 6910849999275624852}
   speed: 5
