@@ -10,8 +10,6 @@ public class PlayerLooks : NetworkBehaviour
     public Material materialP3; 
     public Material materialP4; 
 
-    public GameObject hat1;
-    public GameObject hat2;
     public GameObject networkHat1;
     public GameObject networkHat2;
 
@@ -28,12 +26,8 @@ public class PlayerLooks : NetworkBehaviour
             //color
             rend.sharedMaterial = materialP1;
 
-            //camera hat 
-            hat1.SetActive(true); 
-            hat2.SetActive(false); 
-            
             //network hat
-            if(isLocalPlayer){ 
+            if(!isLocalPlayer){ 
                 networkHat1.gameObject.SetActive(false);
             }
             else{
@@ -44,13 +38,9 @@ public class PlayerLooks : NetworkBehaviour
         else if(gamePlayerScript.playerNumber == 2){
             //color
             rend.sharedMaterial = materialP2;
-
-            //camera hat 
-            hat1.SetActive(false); 
-            hat2.SetActive(true); 
             
             //network hat
-            if(isLocalPlayer){ 
+            if(!isLocalPlayer){ 
                 networkHat2.gameObject.SetActive(false);
             }
             else{
@@ -60,14 +50,10 @@ public class PlayerLooks : NetworkBehaviour
         }
         else if(gamePlayerScript.playerNumber == 3){
             //color
-            rend.sharedMaterial = materialP3;
-
-            //camera hat 
-            hat1.SetActive(true); 
-            hat2.SetActive(false); 
+            rend.sharedMaterial = materialP3; 
             
             //network hat
-            if(isLocalPlayer){ 
+            if(!isLocalPlayer){ 
                 networkHat1.gameObject.SetActive(false);
             }
             else{
@@ -79,12 +65,8 @@ public class PlayerLooks : NetworkBehaviour
             //color
             rend.sharedMaterial = materialP4;
 
-            //camera hat 
-            hat1.SetActive(false); 
-            hat2.SetActive(true); 
-            
             //network hat
-            if(isLocalPlayer){ 
+            if(!isLocalPlayer){ 
                 networkHat2.gameObject.SetActive(false);
             }
             else{
