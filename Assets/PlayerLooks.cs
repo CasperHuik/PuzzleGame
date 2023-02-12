@@ -34,12 +34,12 @@ public class PlayerLooks : NetworkBehaviour
             
             //network hat
             if(isLocalPlayer){ 
-                networkHat1.SetActive(false);
+                networkHat1.gameObject.SetActive(false);
             }
             else{
-                networkHat1.SetActive(true);
+                networkHat1.gameObject.SetActive(true);
             }
-            networkHat2.SetActive(false);
+            networkHat2.gameObject.SetActive(false);
         }
         else if(gamePlayerScript.playerNumber == 2){
             //color
@@ -51,12 +51,12 @@ public class PlayerLooks : NetworkBehaviour
             
             //network hat
             if(isLocalPlayer){ 
-                networkHat2.SetActive(false);
+                networkHat2.gameObject.SetActive(false);
             }
             else{
-                networkHat2.SetActive(true);
+                networkHat2.gameObject.SetActive(true);
             }
-            networkHat1.SetActive(false);
+            networkHat1.gameObject.SetActive(false);
         }
         else if(gamePlayerScript.playerNumber == 3){
             //color
@@ -68,12 +68,12 @@ public class PlayerLooks : NetworkBehaviour
             
             //network hat
             if(isLocalPlayer){ 
-                networkHat1.SetActive(false);
+                networkHat1.gameObject.SetActive(false);
             }
             else{
-                networkHat1.SetActive(true);
+                networkHat1.gameObject.SetActive(true);
             }
-            networkHat2.SetActive(false);
+            networkHat2.gameObject.SetActive(false);
         }
         else{
             //color
@@ -85,12 +85,12 @@ public class PlayerLooks : NetworkBehaviour
             
             //network hat
             if(isLocalPlayer){ 
-                networkHat2.SetActive(false);
+                networkHat2.gameObject.SetActive(false);
             }
             else{
-                networkHat2.SetActive(true);
+                networkHat2.gameObject.SetActive(true);
             }
-            networkHat1.SetActive(false);
+            networkHat1.gameObject.SetActive(false);
         }
         
     }
