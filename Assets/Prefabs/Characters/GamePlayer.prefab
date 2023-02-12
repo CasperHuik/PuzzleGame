@@ -339,6 +339,7 @@ MonoBehaviour:
   networkHat1: {fileID: 9115803915772157865}
   networkHat2: {fileID: 8676500890464827594}
   gamePlayerScript: {fileID: 6777906575338827274}
+  rend: {fileID: 7335045289914514481}
 --- !u!1 &6910849999275624852
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,7 +717,7 @@ PrefabInstance:
     - target: {fileID: 9216200083876772820, guid: 925c155961020df4aa51c9fd140dc3f2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 925c155961020df4aa51c9fd140dc3f2, type: 3}

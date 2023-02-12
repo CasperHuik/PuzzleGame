@@ -15,11 +15,10 @@ public class PlayerLooks : NetworkBehaviour
 
     [SerializeField] GamePlayer gamePlayerScript; 
 
-    Renderer rend;
+    public Renderer rend;
 
 
     public void Start(){
-        rend = GetComponent<Renderer>();
         rend.enabled = true; 
         if(gamePlayerScript.playerNumber == 1){
 
@@ -28,14 +27,14 @@ public class PlayerLooks : NetworkBehaviour
 
             //network hat
             if(isLocalPlayer){ 
-                networkHat1.gameObject.SetActive(false);
-                Debug.Log("Hat 1 true");
-            }
-            else{
-                networkHat1.gameObject.SetActive(true);
+                networkHat1.SetActive(false);
                 Debug.Log("Hat 1 false");
             }
-            networkHat2.gameObject.SetActive(false);
+            else{
+                networkHat1.SetActive(true);
+                Debug.Log("Hat 1 true");
+            }
+            networkHat2.SetActive(false);
         }
         else if(gamePlayerScript.playerNumber == 2){
             //color
@@ -43,12 +42,12 @@ public class PlayerLooks : NetworkBehaviour
             
             //network hat
             if(isLocalPlayer){ 
-                networkHat2.gameObject.SetActive(false);
+                networkHat2.SetActive(false);
             }
             else{
-                networkHat2.gameObject.SetActive(true);
+                networkHat2.SetActive(true);
             }
-            networkHat1.gameObject.SetActive(false);
+            networkHat1.SetActive(false);
         }
         else if(gamePlayerScript.playerNumber == 3){
             //color
@@ -56,12 +55,12 @@ public class PlayerLooks : NetworkBehaviour
             
             //network hat
             if(isLocalPlayer){ 
-                networkHat1.gameObject.SetActive(false);
+                networkHat1.SetActive(false);
             }
             else{
-                networkHat1.gameObject.SetActive(true);
+                networkHat1.SetActive(true);
             }
-            networkHat2.gameObject.SetActive(false);
+            networkHat2.SetActive(false);
         }
         else{
             //color
@@ -69,12 +68,12 @@ public class PlayerLooks : NetworkBehaviour
 
             //network hat
             if(isLocalPlayer){ 
-                networkHat2.gameObject.SetActive(false);
+                networkHat2.SetActive(false);
             }
             else{
-                networkHat2.gameObject.SetActive(true);
+                networkHat2.SetActive(true);
             }
-            networkHat1.gameObject.SetActive(false);
+            networkHat1.SetActive(false);
         }
         
     }
