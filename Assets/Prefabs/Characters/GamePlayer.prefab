@@ -202,6 +202,7 @@ MonoBehaviour:
   IsGameLeader: 0
   isPlayerReady: 0
   playerSteamId: 0
+  activeScene: 
 --- !u!114 &6260445283815460081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +259,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   activeScene: 0
-  transformCharacter: {fileID: 6141406830019278474}
+  gamePlayer: {fileID: 6777906575338827274}
   controller: {fileID: 3642246726977611159}
   PlayerModel: {fileID: 6910849999275624852}
   speed: 5

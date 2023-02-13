@@ -7,8 +7,7 @@ using Mirror;
 public class FirstPersonMovement : NetworkBehaviour
 {
     private Animator animator;
-    public int activeScene = 0;
-    public Transform transformCharacter; 
+    public string activeScene = "lobby";
 
     public CharacterController controller; 
     public GameObject PlayerModel; 
@@ -21,8 +20,12 @@ public class FirstPersonMovement : NetworkBehaviour
     public float groundDistance = 0.4f; 
     public LayerMask groundMask; 
 
+    
+
     Vector3 velocity; 
     bool isGrounded; 
+
+    public bool spawnYN = true; 
 
     private void Start(){
         PlayerModel.SetActive(false);
@@ -35,15 +38,14 @@ public class FirstPersonMovement : NetworkBehaviour
     {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name; 
-        if(sceneName == "Game" || sceneName == "map"){
+        if(sceneName == "Game" || sceneName == "map test"){
             if(PlayerModel.activeSelf == false){
-                SetPosition();
-                activeScene++;
                 PlayerModel.SetActive(true);
+                transform.position = new Vector3(-200,260,-140);
             }
-            if(sceneName=="map test"){
-                SetPosition();
-                activeScene++;
+            if(sceneName=="map test" && spawnYN == true){
+                spawnYN = false; 
+                transform.position = new Vector3(400,70,400);
             }
 
             if(isLocalPlayer){
@@ -68,14 +70,9 @@ public class FirstPersonMovement : NetworkBehaviour
                 }
 
                 velocity.y += gravity * Time.deltaTime; 
-
+                
                 controller.Move(velocity * Time.deltaTime);
             }
         }
     }
-
-    public void SetPosition(){
-        transformCharacter.position = transformCharacter.position + new Vector3(100,100,100);
-    }
-
 }

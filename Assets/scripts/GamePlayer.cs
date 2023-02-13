@@ -18,6 +18,9 @@ public class GamePlayer : NetworkBehaviour
     [SyncVar(hook = nameof(HandlePlayerReadyStatusChange))] public bool isPlayerReady;
     [SyncVar] public ulong playerSteamId;
 
+    public string activeScene;
+    public bool spawnYN = false; 
+
     private MyNetworkManager game;
     private MyNetworkManager Game
     {
@@ -58,6 +61,15 @@ public class GamePlayer : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(spawnYN = true){
+            activeScene = SceneManager.GetActiveScene().name;
+        }
+
+        if(SceneManager.GetActiveScene().name == "Game" && spawnYN == false){
+            transform.position = new Vector3(10,10,10);
+            spawnYN = true; 
+            
+        }
         
     }
     public void HandlePlayerNameUpdate(string oldValue, string newValue)
@@ -96,6 +108,7 @@ public class GamePlayer : NetworkBehaviour
             CmdCanLobbyStartGame();
         if(SceneManager.GetActiveScene().name == "Game"){
             CmdCanLobbyStartGame();
+            activeScene = "Game";
         }
     }
     [Command]
@@ -143,4 +156,6 @@ public class GamePlayer : NetworkBehaviour
     private void OnTriggerEnter(Collider other){
         CanLobbyStartGame();
     }
+
+
 }
