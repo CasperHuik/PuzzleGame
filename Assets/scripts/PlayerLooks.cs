@@ -5,14 +5,18 @@ using Mirror;
 
 public class PlayerLooks : NetworkBehaviour
 {
+
+    [Header("Player Color")]
     public Material materialP1; 
     public Material materialP2; 
     public Material materialP3; 
     public Material materialP4; 
 
+    [Header("Player Hat")]
     public GameObject networkHat1;
     public GameObject networkHat2;
 
+    [Header("Player GameObjects")]
     [SerializeField] GamePlayer gamePlayerScript; 
 
     public Renderer rend;

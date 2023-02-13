@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class InteractWithEnvironment : MonoBehaviour
 {
+
+    [Header("Interaction Variables")]
     public float damage = 10f; 
     public float range = 100f; 
 
+    [Header("GameObjects")]
     public Camera interactCamera; 
 
     

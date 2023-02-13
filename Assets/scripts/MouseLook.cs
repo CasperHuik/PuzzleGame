@@ -6,8 +6,10 @@ using Mirror;
 
 public class MouseLook : NetworkBehaviour
 {
+    [Header("Mouse Sensitivity")]
     public float mouseSensitivity = 100f;
 
+    [Header("GameObjects")]
     public Transform playerBody; 
 
     float xRotation = 0f;

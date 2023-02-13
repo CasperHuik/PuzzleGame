@@ -6,26 +6,30 @@ using Mirror;
 
 public class FirstPersonMovement : NetworkBehaviour
 {
+    [Header("Animations")]
     private Animator animator;
-    public string activeScene = "lobby";
 
+    [Header("GameObjects")]
     public CharacterController controller; 
     public GameObject PlayerModel; 
 
+    [Header("Speed")]
     public float speed = 12f; 
+    public float runSpeed = 12f; 
+    public float normalSpeed = 6f; 
+
+    [Header("Gravity")]
     public float gravity = -9.81f; 
     public float jumpHeight = 10f; 
-
     public Transform groundCheck; 
     public float groundDistance = 0.4f; 
     public LayerMask groundMask; 
 
-    
 
     Vector3 velocity; 
     bool isGrounded; 
 
-    public bool spawnYN = true; 
+    private bool spawnYN = true; 
 
     private void Start(){
         PlayerModel.SetActive(false);
@@ -55,7 +59,15 @@ public class FirstPersonMovement : NetworkBehaviour
                     velocity.y = -2f; 
                 }
 
-
+                if(Input.GetKeyUp(KeyCode.LeftShift)){
+                    speed = normalSpeed;
+                    Debug.Log(speed);
+                }
+                if(Input.GetKeyDown(KeyCode.LeftShift) && isGrounded){
+                    speed = runSpeed;
+                    Debug.Log(speed);
+                }
+                
                 float x = Input.GetAxis("Horizontal");
                 float z = Input.GetAxis("Vertical");
                 //if(Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0){animator.SetBool("IsMoving", true);}

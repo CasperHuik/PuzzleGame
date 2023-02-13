@@ -203,6 +203,7 @@ MonoBehaviour:
   isPlayerReady: 0
   playerSteamId: 0
   activeScene: 
+  spawnYN: 0
 --- !u!114 &6260445283815460081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,10 +260,11 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   activeScene: 0
-  gamePlayer: {fileID: 6777906575338827274}
   controller: {fileID: 3642246726977611159}
   PlayerModel: {fileID: 6910849999275624852}
   speed: 5
+  runSpeed: 9
+  normalSpeed: 5
   gravity: -19.62
   jumpHeight: 1
   groundCheck: {fileID: 5460799183204553992}
@@ -270,6 +272,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 256
+  spawnYN: 1
 --- !u!114 &3087099059395344885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,7 +538,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4cc898859d2bce246bd6897790bf4d73, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fbb782747a3a5fb4ebcb5d35d8875825, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.071
   m_Pitch: 1
