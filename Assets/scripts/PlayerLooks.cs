@@ -15,6 +15,7 @@ public class PlayerLooks : NetworkBehaviour
     [Header("Player Hat")]
     public GameObject networkHat1;
     public GameObject networkHat2;
+    public GameObject glasses; 
 
     [Header("Player GameObjects")]
     [SerializeField] GamePlayer gamePlayerScript; 
@@ -32,10 +33,12 @@ public class PlayerLooks : NetworkBehaviour
             //network hat
             if(isLocalPlayer){ 
                 networkHat1.SetActive(false);
+                glasses.SetActive(false);
                 Debug.Log("Hat 1 false");
             }
             else{
                 networkHat1.SetActive(true);
+                glasses.SetActive(true);
                 Debug.Log("Hat 1 true");
             }
             networkHat2.SetActive(false);
@@ -47,9 +50,11 @@ public class PlayerLooks : NetworkBehaviour
             //network hat
             if(isLocalPlayer){ 
                 networkHat2.SetActive(false);
+                glasses.SetActive(false);
             }
             else{
                 networkHat2.SetActive(true);
+                glasses.SetActive(true);
             }
             networkHat1.SetActive(false);
         }
@@ -60,9 +65,12 @@ public class PlayerLooks : NetworkBehaviour
             //network hat
             if(isLocalPlayer){ 
                 networkHat1.SetActive(false);
+                glasses.SetActive(false);
             }
             else{
                 networkHat1.SetActive(true);
+                glasses.SetActive(true);
+
             }
             networkHat2.SetActive(false);
         }
@@ -73,9 +81,12 @@ public class PlayerLooks : NetworkBehaviour
             //network hat
             if(isLocalPlayer){ 
                 networkHat2.SetActive(false);
+                glasses.SetActive(false);
             }
             else{
                 networkHat2.SetActive(true);
+                glasses.SetActive(true);
+
             }
             networkHat1.SetActive(false);
         }
