@@ -548,6 +548,7 @@ GameObject:
   - component: {fileID: 8729480119820869348}
   - component: {fileID: 1825241198452807103}
   - component: {fileID: 1094012082443450674}
+  - component: {fileID: 4303626816198699428}
   m_Layer: 0
   m_Name: GamePlayer
   m_TagString: Untagged
@@ -671,6 +672,8 @@ MonoBehaviour:
   speed: 5
   runSpeed: 9
   normalSpeed: 5
+  crouchHeight: 0.5
+  normalHeight: 2
   gravity: -19.62
   jumpHeight: 1
   groundCheck: {fileID: 5460799183204553992}
@@ -769,6 +772,24 @@ MonoBehaviour:
   - {fileID: 4861689512699365569}
   - {fileID: 2553262446974372286}
   activeItem: 4
+--- !u!114 &4303626816198699428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141406830019278485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da52f6d003c18c5439ad8f9898fdc80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  PlayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  audioSource: {fileID: 7291024475617529550}
 --- !u!1 &6910849999275624852
 GameObject:
   m_ObjectHideFlags: 0

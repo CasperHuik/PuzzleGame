@@ -18,6 +18,10 @@ public class FirstPersonMovement : NetworkBehaviour
     public float runSpeed = 12f; 
     public float normalSpeed = 6f; 
 
+    [Header("Height")]
+    public float crouchHeight = 0.5f; 
+    public float normalHeight = 2f; 
+
     [Header("Gravity")]
     public float gravity = -9.81f; 
     public float jumpHeight = 10f; 
@@ -59,6 +63,15 @@ public class FirstPersonMovement : NetworkBehaviour
                     velocity.y = -2f; 
                 }
 
+                //speed
+                if(Input.GetKeyUp(KeyCode.LeftControl)){
+                    controller.height = normalHeight;
+                }
+                if(Input.GetKeyDown(KeyCode.LeftControl)){
+                    controller.height = normalHeight*crouchHeight;
+                }
+
+                //crouch
                 if(Input.GetKeyUp(KeyCode.LeftShift)){
                     speed = normalSpeed;
                     Debug.Log(speed);
@@ -67,6 +80,8 @@ public class FirstPersonMovement : NetworkBehaviour
                     speed = runSpeed;
                     Debug.Log(speed);
                 }
+
+                
                 
                 float x = Input.GetAxis("Horizontal");
                 float z = Input.GetAxis("Vertical");
