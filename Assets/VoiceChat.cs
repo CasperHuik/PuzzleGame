@@ -47,7 +47,9 @@ public class VoiceChat : NetworkBehaviour
  
         for(int i = 0; i < players.Length; i++)
         {
+            if(isLocalPlayer){return;}
             Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size);
+            Debug.Log("Huts");
         }
     }
  
