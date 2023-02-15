@@ -63,20 +63,20 @@ public class FirstPersonMovement : NetworkBehaviour
                     velocity.y = -2f; 
                 }
 
-                //speed
-                if(Input.GetKeyUp(KeyCode.LeftControl)){
+                //Crouch
+                if(!Input.GetKey(KeyCode.LeftControl)){
                     controller.height = normalHeight;
                 }
-                if(Input.GetKeyDown(KeyCode.LeftControl)){
+                if(Input.GetKey(KeyCode.LeftControl)){
                     controller.height = normalHeight*crouchHeight;
                 }
 
-                //crouch
-                if(Input.GetKeyUp(KeyCode.LeftShift)){
+                //Sprint
+                if(!Input.GetKey(KeyCode.LeftShift)){
                     speed = normalSpeed;
                     Debug.Log(speed);
                 }
-                if(Input.GetKeyDown(KeyCode.LeftShift) && isGrounded){
+                if(Input.GetKey(KeyCode.LeftShift) && isGrounded){
                     speed = runSpeed;
                     Debug.Log(speed);
                 }

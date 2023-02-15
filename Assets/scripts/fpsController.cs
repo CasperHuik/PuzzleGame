@@ -9,7 +9,9 @@ public class fpsController : MonoBehaviour
     public CharacterController controller; 
     public GameObject PlayerModel; 
 
-    public float speed = 12f; 
+    public float speed = 12f;
+    public float normalSpeed = 12f; 
+    public float sprintSpeed = 24f;  
     public float gravity = -9.81f; 
     public float jumpHeight = 10f; 
 
@@ -48,6 +50,13 @@ public class fpsController : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && isGrounded){
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+
+        if(!Input.GetKey(KeyCode.LeftShift)){
+            speed = normalSpeed;
+        }
+        if(Input.GetKey(KeyCode.LeftShift) && isGrounded){
+            speed = sprintSpeed;
         }
 
         velocity.y += gravity * Time.deltaTime; 
