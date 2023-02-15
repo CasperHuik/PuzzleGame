@@ -8,17 +8,20 @@ public class VoiceChat : NetworkBehaviour
 {
     public AudioSource audioSource;
     public bool speaking = false;
+    float sendVolume; 
+    float distanceBetweenPlayers; 
+    public int idLocalPlayer; 
  
     private void Update()
     {
 
 
-        if (isLocalPlayer && Input.GetKey(KeyCode.T))
+        if (isLocalPlayer && Input.GetKey(KeyCode.V))
         {
             SteamUser.StartVoiceRecording();
             Debug.Log("Record Start");
         }
-        else if(isLocalPlayer && !Input.GetKey(KeyCode.T))
+        else if(isLocalPlayer && !Input.GetKey(KeyCode.V))
         {
             SteamUser.StopVoiceRecording();
             Debug.Log("Record Stop");
@@ -47,17 +50,28 @@ public class VoiceChat : NetworkBehaviour
     {
         Debug.Log("Command");
         VoiceChat[] players = FindObjectsOfType<VoiceChat>();
+        for(int i = 0; i < players.Length; i++){
+            if(isLocalPlayer){idLocalPlayer = i;}
+        }
  
         for(int i = 0; i < players.Length; i++)
         {
-            Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size);
+            Debug.Log("Playerposition: " + players[i].transform.position.x);
+            if(!isLocalPlayer){
+                distanceBetweenPlayers = Mathf.Sqrt(Mathf.Pow(players[i].transform.position.x - players[idLocalPlayer].transform.position.x, 2) + Mathf.Pow(players[i].transform.position.z - players[idLocalPlayer].transform.position.z, 2) + Mathf.Pow(players[i].transform.position.y - players[idLocalPlayer].transform.position.y, 2));
+                sendVolume = 1/(Mathf.Pow(distanceBetweenPlayers, 2));
+                
+                Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
+                
+            }
+
         }
     }
  
  
  
     [TargetRpc (channel = 1)]
-    void Target_PlaySound(NetworkConnection conn, byte[] destBuffer, uint bytesWritten)
+    void Target_PlaySound(NetworkConnection conn, byte[] destBuffer, uint bytesWritten, float voiceVolume)
     {
         Debug.Log("Target");
         byte[] destBuffer2 = new byte[22050 * 2];
@@ -73,6 +87,7 @@ public class VoiceChat : NetworkBehaviour
                 test[i] = (short)(destBuffer2[i * 2] | destBuffer2[i * 2 + 1] << 8) / 32768.0f;
             }
             audioSource.clip.SetData(test, 0);
+            audioSource.volume = voiceVolume;
             audioSource.Play();
         }
     }
