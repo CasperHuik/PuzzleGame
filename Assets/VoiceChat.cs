@@ -50,8 +50,8 @@ public class VoiceChat : NetworkBehaviour
     {
         Debug.Log("Command");
         VoiceChat[] players = FindObjectsOfType<VoiceChat>();
-        for(int i = 0; i < players.Length; i++){
-            if(isLocalPlayer){idLocalPlayer = i;}
+        for(int j = 0; j < players.Length; j++){
+            if(isLocalPlayer){idLocalPlayer = j;}
         }
  
         for(int i = 0; i < players.Length; i++)
@@ -59,7 +59,7 @@ public class VoiceChat : NetworkBehaviour
 
             distanceBetweenPlayers = Mathf.Sqrt(Mathf.Pow(players[i].transform.position.x - players[idLocalPlayer].transform.position.x, 2) + Mathf.Pow(players[i].transform.position.z - players[idLocalPlayer].transform.position.z, 2) + Mathf.Pow(players[i].transform.position.y - players[idLocalPlayer].transform.position.y, 2));
             Debug.Log("Afstand tussen spelers: " + distanceBetweenPlayers);
-            sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/100)+1);
+            sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/50)+1);
             Debug.Log("Verstuur Volume: " + sendVolume);
             //Debug.Log("Playerposition: " + players[i].transform.position.x);
             if(!isLocalPlayer){
