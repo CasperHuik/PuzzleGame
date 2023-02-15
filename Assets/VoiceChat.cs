@@ -8,7 +8,7 @@ public class VoiceChat : NetworkBehaviour
 {
     public AudioSource audioSource;
     public bool speaking = false;
-    float sendVolume; 
+    float sendVolume = 1;
     float distanceBetweenPlayers; 
     public int idLocalPlayer = 0; 
  
@@ -53,10 +53,11 @@ public class VoiceChat : NetworkBehaviour
  
         for(int i = 0; i < players.Length; i++)
         {
-            distanceBetweenPlayers = Mathf.Sqrt(Mathf.Pow(players[i].transform.position.x - players[idLocalPlayer].transform.position.x, 2) + Mathf.Pow(players[i].transform.position.z - players[idLocalPlayer].transform.position.z, 2) + Mathf.Pow(players[i].transform.position.y - players[idLocalPlayer].transform.position.y, 2));
-            Debug.Log("Afstand tussen spelers: " + distanceBetweenPlayers);
-            sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/50)+1);
-            Debug.Log("Verstuur Volume: " + sendVolume);
+            //distanceBetweenPlayers = Mathf.Sqrt(Mathf.Pow(players[i].transform.position.x - players[idLocalPlayer].transform.position.x, 2) + Mathf.Pow(players[i].transform.position.z - players[idLocalPlayer].transform.position.z, 2) + Mathf.Pow(players[i].transform.position.y - players[idLocalPlayer].transform.position.y, 2));
+            //Debug.Log("Afstand tussen spelers: " + distanceBetweenPlayers);
+            //sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/50)+1);
+            //Debug.Log("Verstuur Volume: " + sendVolume);
+
             if(isLocalPlayer){return;}
             Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
         }
