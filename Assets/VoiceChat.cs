@@ -42,7 +42,7 @@ public class VoiceChat : NetworkBehaviour
         }
     }
  
-    [Command (channel = 2)]
+    [Command (channel = 1)]
     void Cmd_SendData(byte[] data, uint size)
     {
         Debug.Log("Command");
@@ -56,7 +56,7 @@ public class VoiceChat : NetworkBehaviour
  
  
  
-    [TargetRpc (channel = 2)]
+    [TargetRpc (channel = 1)]
     void Target_PlaySound(NetworkConnection conn, byte[] destBuffer, uint bytesWritten)
     {
         Debug.Log("Target");
