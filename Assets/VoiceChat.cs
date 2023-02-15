@@ -55,7 +55,7 @@ public class VoiceChat : NetworkBehaviour
             {
                 distanceBetweenPlayers = Mathf.Sqrt(Mathf.Pow(players[i].transform.position.x - players[gamePlayer.ConnectionId].transform.position.x, 2) + Mathf.Pow(players[i].transform.position.z - players[gamePlayer.ConnectionId].transform.position.z, 2) + Mathf.Pow(players[i].transform.position.y - players[gamePlayer.ConnectionId].transform.position.y, 2));
                 Debug.Log("Afstand tussen spelers: " + distanceBetweenPlayers);
-                sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/50)+1);
+                sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/20)+1);
                 Debug.Log("Verstuur Volume: " + sendVolume);
                 if(i == gamePlayer.ConnectionId){
                     Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
@@ -91,13 +91,5 @@ public class VoiceChat : NetworkBehaviour
             audioSource.volume = voiceVolume;
             audioSource.Play();
         }
-    }
-
-
-    void huts(){
-        //distanceBetweenPlayers = Mathf.Sqrt(Mathf.Pow(players[i].transform.position.x - players[idLocalPlayer].transform.position.x, 2) + Mathf.Pow(players[i].transform.position.z - players[idLocalPlayer].transform.position.z, 2) + Mathf.Pow(players[i].transform.position.y - players[idLocalPlayer].transform.position.y, 2));
-        //Debug.Log("Afstand tussen spelers: " + distanceBetweenPlayers);
-        //sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/50)+1);
-        //Debug.Log("Verstuur Volume: " + sendVolume);
     }
 }
