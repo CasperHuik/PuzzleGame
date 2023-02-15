@@ -45,7 +45,7 @@ public class VoiceChat : NetworkBehaviour
         }
     }
  
-    [Command (channel = 1)]
+    [Command (channel = 2)]
     void Cmd_SendData(byte[] data, uint size)
     {
         Debug.Log("Command");
@@ -59,13 +59,14 @@ public class VoiceChat : NetworkBehaviour
             sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/50)+1);
             Debug.Log("Verstuur Volume: " + sendVolume);
             //Debug.Log("Playerposition: " + players[i].transform.position.x);
-            if(isLocalPlayer){
+            if(idLocalPlayer == i){
                 Debug.Log("Send to local");
                 //sendVolume = 1;
-                //Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
+                Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
             }
             else{
                 Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
+                Debug.Log(i);
             }
 
         }
@@ -73,7 +74,7 @@ public class VoiceChat : NetworkBehaviour
  
  
  
-    [TargetRpc (channel = 1)]
+    [TargetRpc (channel = 2)]
     void Target_PlaySound(NetworkConnection conn, byte[] destBuffer, uint bytesWritten, float voiceVolume)
     {
         Debug.Log("Target");
