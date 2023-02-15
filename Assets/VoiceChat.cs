@@ -7,15 +7,18 @@ using Steamworks;
 public class VoiceChat : NetworkBehaviour
 {
     public AudioSource audioSource;
+    public bool speaking = false;
  
     private void Update()
     {
-        if (isLocalPlayer && Input.GetKeyDown(KeyCode.V))
+
+
+        if (isLocalPlayer && Input.GetKey(KeyCode.T))
         {
             SteamUser.StartVoiceRecording();
             Debug.Log("Record Start");
         }
-        else if (isLocalPlayer && Input.GetKeyUp(KeyCode.V))
+        else if(isLocalPlayer && !Input.GetKey(KeyCode.T))
         {
             SteamUser.StopVoiceRecording();
             Debug.Log("Record Stop");
@@ -39,7 +42,7 @@ public class VoiceChat : NetworkBehaviour
         }
     }
  
-    [Command (channel = 1)]
+    [Command (channel = 2)]
     void Cmd_SendData(byte[] data, uint size)
     {
         Debug.Log("Command");
@@ -47,15 +50,13 @@ public class VoiceChat : NetworkBehaviour
  
         for(int i = 0; i < players.Length; i++)
         {
-            if(isLocalPlayer){return;}
             Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size);
-            Debug.Log("Huts");
         }
     }
  
  
  
-    [TargetRpc (channel = 1)]
+    [TargetRpc (channel = 2)]
     void Target_PlaySound(NetworkConnection conn, byte[] destBuffer, uint bytesWritten)
     {
         Debug.Log("Target");
