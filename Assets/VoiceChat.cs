@@ -57,10 +57,7 @@ public class VoiceChat : NetworkBehaviour
             //Debug.Log("Afstand tussen spelers: " + distanceBetweenPlayers);
             //sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/50)+1);
             //Debug.Log("Verstuur Volume: " + sendVolume);
-
-            if(!isLocalPlayer){
                 Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
-            }
             
         }
     }
