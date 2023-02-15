@@ -787,10 +787,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  PlayerMask:
-    serializedVersion: 2
-    m_Bits: 512
   audioSource: {fileID: 3086749576815441596}
+  speaking: 0
 --- !u!82 &3086749576815441596
 AudioSource:
   m_ObjectHideFlags: 0
@@ -803,7 +801,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -814,7 +812,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
