@@ -10,7 +10,7 @@ public class VoiceChat : NetworkBehaviour
     public bool speaking = false;
     float sendVolume; 
     float distanceBetweenPlayers; 
-    public int idLocalPlayer; 
+    public int idLocalPlayer = 0; 
  
     private void Update()
     {
@@ -50,9 +50,6 @@ public class VoiceChat : NetworkBehaviour
     {
         Debug.Log("Command");
         VoiceChat[] players = FindObjectsOfType<VoiceChat>();
-        for(int j = 0; j < players.Length; j++){
-            if(isLocalPlayer){idLocalPlayer = j;}
-        }
  
         for(int i = 0; i < players.Length; i++)
         {
@@ -63,8 +60,9 @@ public class VoiceChat : NetworkBehaviour
             Debug.Log("Verstuur Volume: " + sendVolume);
             //Debug.Log("Playerposition: " + players[i].transform.position.x);
             if(isLocalPlayer){
-                sendVolume = 0;
-                Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
+                Debug.Log("Send to local");
+                //sendVolume = 1;
+                //Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
             }
             else{
                 Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
