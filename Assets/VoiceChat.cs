@@ -18,13 +18,13 @@ public class VoiceChat : NetworkBehaviour
 
         if (isLocalPlayer && Input.GetKey(KeyCode.V))
         {
-            SteamUser.StartVoiceRecording();
-            Debug.Log("Record Start");
+            SteamUser.StopVoiceRecording();
+            Debug.Log("Record Stop");
         }
         else if(isLocalPlayer && !Input.GetKey(KeyCode.V))
         {
-            SteamUser.StopVoiceRecording();
-            Debug.Log("Record Stop");
+            SteamUser.StartVoiceRecording();
+            Debug.Log("Record Start");
         }
  
         if (isLocalPlayer)
