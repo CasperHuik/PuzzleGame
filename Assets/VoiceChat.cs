@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using Steamworks;
+using UnityEngine.SceneManagement;
  
 public class VoiceChat : NetworkBehaviour
 {
-    public AudioSource audioSource;
+    public AudioSource[] audioSource;
     public bool speaking = false;
     float sendVolume = 1;
     float distanceBetweenPlayers; 
     public GamePlayer gamePlayer; 
     
+    private void Start()
+    {
+
+    }
  
     private void Update()
     {
@@ -48,8 +53,8 @@ public class VoiceChat : NetworkBehaviour
  
     [Command (channel = 2)]
     void Cmd_SendData(byte[] data, uint size)
-    {
-        Debug.Log("Command");
+    {       
+        Debug.Log("Versturen naar voicechat manager");
         VoiceChat[] players = FindObjectsOfType<VoiceChat>();
         if(players.Length >= 1){
             for(int i = 0; i < players.Length; i++)
@@ -79,17 +84,17 @@ public class VoiceChat : NetworkBehaviour
         EVoiceResult ret = SteamUser.DecompressVoice(destBuffer, bytesWritten, destBuffer2, (uint)destBuffer2.Length, out bytesWritten2, 22050);
         if(ret == EVoiceResult.k_EVoiceResultOK && bytesWritten2 > 0)
         {
-            audioSource.clip = AudioClip.Create(UnityEngine.Random.Range(100, 1000000).ToString(), 22050, 1, 22050, false);
+            audioSource[fromWho].clip = AudioClip.Create(UnityEngine.Random.Range(100, 1000000).ToString(), 22050, 1, 22050, false);
  
             float[] test = new float[22050];
             for (int i = 0; i < test.Length; i++)
             {
                 test[i] = (short)(destBuffer2[i * 2] | destBuffer2[i * 2 + 1] << 8) / 32768.0f;
             }
-            audioSource.clip.SetData(test, 0);
-            audioSource.volume = voiceVolume;
+            audioSource[fromWho].clip.SetData(test, 0);
+            audioSource[fromWho].volume = voiceVolume;
             
-            audioSource.Play();
+            audioSource[fromWho].Play();
         }
     }
 }
