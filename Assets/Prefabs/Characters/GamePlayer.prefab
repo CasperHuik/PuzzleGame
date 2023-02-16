@@ -790,6 +790,11 @@ MonoBehaviour:
   audioSource: {fileID: 3086749576815441596}
   speaking: 0
   gamePlayer: {fileID: 6777906575338827274}
+  audioSources:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!82 &3086749576815441596
 AudioSource:
   m_ObjectHideFlags: 0

@@ -10,7 +10,8 @@ public class VoiceChat : NetworkBehaviour
     public bool speaking = false;
     float sendVolume = 1;
     float distanceBetweenPlayers; 
-    public GamePlayer gamePlayer;  
+    public GamePlayer gamePlayer; 
+    public AudioSource[] audioSources;  
  
     private void Update()
     {
@@ -57,10 +58,7 @@ public class VoiceChat : NetworkBehaviour
                 Debug.Log("Afstand tussen spelers: " + distanceBetweenPlayers);
                 sendVolume = 1/((Mathf.Pow(distanceBetweenPlayers, 2)/20)+1);
                 Debug.Log("Verstuur Volume: " + sendVolume);
-                if(i == gamePlayer.ConnectionId){
-                    Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume);
-                }
-                
+                Target_PlaySound(players[i].GetComponent<NetworkIdentity>().connectionToClient, data, size, sendVolume, gamePlayer.ConnectionId);
                 Debug.Log(i);
                 
             
@@ -72,8 +70,9 @@ public class VoiceChat : NetworkBehaviour
  
  
     [TargetRpc (channel = 2)]
-    void Target_PlaySound(NetworkConnection conn, byte[] destBuffer, uint bytesWritten, float voiceVolume)
+    void Target_PlaySound(NetworkConnection conn, byte[] destBuffer, uint bytesWritten, float voiceVolume, int fromWho)
     {
+        //if(fromWho == gamePlayer.ConnectionId){return;}
         Debug.Log("Target");
         byte[] destBuffer2 = new byte[22050 * 2];
         uint bytesWritten2;
