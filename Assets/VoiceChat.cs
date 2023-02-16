@@ -72,7 +72,7 @@ public class VoiceChat : NetworkBehaviour
     [TargetRpc (channel = 2)]
     void Target_PlaySound(NetworkConnection conn, byte[] destBuffer, uint bytesWritten, float voiceVolume, int fromWho)
     {
-        if(fromWho == gamePlayer.ConnectionId){return;}
+        //if(fromWho == gamePlayer.ConnectionId){return;}
         Debug.Log("Target");
         byte[] destBuffer2 = new byte[22050 * 2];
         uint bytesWritten2;
