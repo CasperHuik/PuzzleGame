@@ -17,6 +17,9 @@ public class VoiceChat : NetworkBehaviour
     private void Start()
     {
         id = gamePlayer.ConnectionId;
+        if(isLocalPlayer){
+            audioSource[id].mute = true; 
+        }
     }
  
     private void Update()
