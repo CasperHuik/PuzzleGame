@@ -12,10 +12,11 @@ public class VoiceChat : NetworkBehaviour
     float sendVolume = 1;
     float distanceBetweenPlayers; 
     public GamePlayer gamePlayer; 
+    public int id;
     
     private void Start()
     {
-
+        id = gamePlayer.ConnectionId;
     }
  
     private void Update()
@@ -77,14 +78,16 @@ public class VoiceChat : NetworkBehaviour
     [TargetRpc (channel = 2)]
     void Target_PlaySound(NetworkConnection conn, byte[] destBuffer, uint bytesWritten, float voiceVolume, int fromWho)
     {
-        //if(fromWho == gamePlayer.ConnectionId){return;}
-        Debug.Log("Target");
+
+        if(fromWho == gamePlayer.ConnectionId){Debug.Log("Van mezelf");}
+        else{Debug.Log("Van een ander");}
+        Debug.Log(fromWho);
         byte[] destBuffer2 = new byte[22050 * 2];
         uint bytesWritten2;
         EVoiceResult ret = SteamUser.DecompressVoice(destBuffer, bytesWritten, destBuffer2, (uint)destBuffer2.Length, out bytesWritten2, 22050);
         if(ret == EVoiceResult.k_EVoiceResultOK && bytesWritten2 > 0)
         {
-            audioSource[fromWho].clip = AudioClip.Create(UnityEngine.Random.Range(100, 1000000).ToString(), 22050, 1, 22050, false);
+            audioSource[fromWho].clip = AudioClip.Create(fromWho.ToString(), 22050, 1, 22050, false);
  
             float[] test = new float[22050];
             for (int i = 0; i < test.Length; i++)
